@@ -1,0 +1,10 @@
+{
+  "base": "EUR",
+  "quote": "USD",
+  "usdPerEur": 1.1193,
+  "date": "2026-10-23",
+  "source": "European Central Bank euro foreign exchange reference rate (USD)",
+  "sourceUrl": "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml",
+  "retrievedAtUtc": "2026-10-24T11:40:00Z",
+  "reuseNote": "ECB reference rates are published for information. Attribution: European Central Bank. Official HTML table: https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html"
+}
