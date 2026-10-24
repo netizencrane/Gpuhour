@@ -14,7 +14,7 @@ export function formatMaybeMoney(
   currency: "USD" | "EUR",
 ): string {
   if (amount === null) {
-    return "TBD – needs verification";
+    return "not published";
   }
   return formatMoney(amount, currency);
 }

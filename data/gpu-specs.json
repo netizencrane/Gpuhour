@@ -1,0 +1,205 @@
+{
+  "updatedAtUtc": "2026-10-24T13:00:00Z",
+  "note": "Only figures printed on official NVIDIA product pages or official NVIDIA documentation. Missing cells stay null and render as not published. Cloud list prices live in prices.json, not here.",
+  "models": {
+    "H100": {
+      "displayName": "NVIDIA H100",
+      "architecture": "Hopper",
+      "productUrl": "https://www.nvidia.com/en-us/data-center/h100/",
+      "sources": [
+        {
+          "label": "NVIDIA H100 product page (SXM and NVL specification table)",
+          "url": "https://www.nvidia.com/en-us/data-center/h100/"
+        },
+        {
+          "label": "NVIDIA HGX AI Factory components (H100 SXM memory type)",
+          "url": "https://docs.nvidia.com/enterprise-reference-architectures/hgx-ai-factory-h100-h200-b200/latest/components.html"
+        }
+      ],
+      "variants": [
+        {
+          "id": "sxm",
+          "name": "H100 SXM",
+          "formFactor": "SXM",
+          "memoryGb": 80,
+          "memoryType": "HBM3",
+          "memoryBandwidthTBs": 3.35,
+          "nvlinkGBs": 900,
+          "tdpW": "Up to 700W (configurable)",
+          "fp64Tflops": 34,
+          "fp64TensorTflops": 67,
+          "notes": [
+            "Memory type HBM3 is taken from NVIDIA's HGX H100 SXM row, not from the public H100 marketing table (that table prints capacity and bandwidth only)."
+          ]
+        },
+        {
+          "id": "nvl",
+          "name": "H100 NVL",
+          "formFactor": "PCIe dual-slot air-cooled",
+          "memoryGb": 94,
+          "memoryType": null,
+          "memoryBandwidthTBs": 3.9,
+          "nvlinkGBs": 600,
+          "tdpW": "350-400W (configurable)",
+          "fp64Tflops": 30,
+          "fp64TensorTflops": 60,
+          "notes": [
+            "NVIDIA's current H100 product page publishes SXM and NVL. It does not publish a separate 80 GB PCIe row. Cloud offers labelled H100 PCIe are kept as their own price rows and are not treated as NVL unless the provider says so."
+          ]
+        }
+      ]
+    },
+    "H200": {
+      "displayName": "NVIDIA H200",
+      "architecture": "Hopper",
+      "productUrl": "https://www.nvidia.com/en-us/data-center/h200/",
+      "sources": [
+        {
+          "label": "NVIDIA H200 product page (SXM and NVL specification table)",
+          "url": "https://www.nvidia.com/en-us/data-center/h200/"
+        }
+      ],
+      "variants": [
+        {
+          "id": "sxm",
+          "name": "H200 SXM",
+          "formFactor": "SXM",
+          "memoryGb": 141,
+          "memoryType": "HBM3e",
+          "memoryBandwidthTBs": 4.8,
+          "nvlinkGBs": 900,
+          "tdpW": "Up to 700W (configurable)",
+          "fp64Tflops": 34,
+          "fp64TensorTflops": 67,
+          "notes": [
+            "NVIDIA states the H200 is the first GPU with HBM3e and prints 141 GB at 4.8 TB/s. The specification table is marked preliminary and may change."
+          ]
+        },
+        {
+          "id": "nvl",
+          "name": "H200 NVL",
+          "formFactor": "PCIe dual-slot air-cooled",
+          "memoryGb": 141,
+          "memoryType": "HBM3e",
+          "memoryBandwidthTBs": 4.8,
+          "nvlinkGBs": 900,
+          "tdpW": "Up to 600W (configurable)",
+          "fp64Tflops": 30,
+          "fp64TensorTflops": 60,
+          "notes": [
+            "NVL NVLink figure is the per-GPU 2- or 4-way NVLink bridge bandwidth printed on the H200 product page."
+          ]
+        }
+      ]
+    },
+    "B200": {
+      "displayName": "NVIDIA B200",
+      "architecture": "Blackwell",
+      "productUrl": "https://www.nvidia.com/en-us/data-center/dgx-b200/",
+      "sources": [
+        {
+          "label": "NVIDIA DGX B200 product page (8-GPU system totals)",
+          "url": "https://www.nvidia.com/en-us/data-center/dgx-b200/"
+        },
+        {
+          "label": "NVIDIA HGX AI Factory components (per-GPU B200 SXM)",
+          "url": "https://docs.nvidia.com/enterprise-reference-architectures/hgx-ai-factory-h100-h200-b200/latest/components.html"
+        }
+      ],
+      "variants": [
+        {
+          "id": "sxm",
+          "name": "B200 SXM",
+          "formFactor": "SXM",
+          "memoryGb": 180,
+          "memoryType": "HBM3e",
+          "memoryBandwidthTBs": 8,
+          "nvlinkGBs": 1800,
+          "tdpW": "Configurable up to 1000W (HGX B200 PCF summary)",
+          "fp64Tflops": null,
+          "fp64TensorTflops": null,
+          "notes": [
+            "NVIDIA publishes 180 GB HBM3e and up to 8 TB/s per B200 SXM GPU. DGX B200 lists 1,440 GB and 64 TB/s across eight GPUs, which matches 180 GB and 8 TB/s each.",
+            "Some cloud price rows print 192 GB. That is the provider's published VRAM, not a figure we take from NVIDIA's B200 SXM documentation.",
+            "NVIDIA system pages publish aggregate FP4/FP8 petaFLOPS for eight-GPU boards. A single-GPU FP64 figure is not published on the pages cited here, so it stays not published."
+          ]
+        }
+      ]
+    },
+    "A100": {
+      "displayName": "NVIDIA A100",
+      "architecture": "Ampere",
+      "productUrl": "https://www.nvidia.com/en-us/data-center/a100/",
+      "sources": [
+        {
+          "label": "NVIDIA A100 product page (80 GB SXM and 80 GB PCIe table)",
+          "url": "https://www.nvidia.com/en-us/data-center/a100/"
+        }
+      ],
+      "variants": [
+        {
+          "id": "sxm-80",
+          "name": "A100 80GB SXM",
+          "formFactor": "SXM",
+          "memoryGb": 80,
+          "memoryType": "HBM2e",
+          "memoryBandwidthTBs": 2.039,
+          "nvlinkGBs": 600,
+          "tdpW": "400W (standard configuration)",
+          "fp64Tflops": 9.7,
+          "fp64TensorTflops": 19.5,
+          "notes": [
+            "The A100 product-page table prints one FP64 column across both 80 GB form factors."
+          ]
+        },
+        {
+          "id": "pcie-80",
+          "name": "A100 80GB PCIe",
+          "formFactor": "PCIe",
+          "memoryGb": 80,
+          "memoryType": "HBM2e",
+          "memoryBandwidthTBs": 1.935,
+          "nvlinkGBs": 600,
+          "tdpW": "300W",
+          "fp64Tflops": 9.7,
+          "fp64TensorTflops": 19.5,
+          "notes": [
+            "NVLink on the PCIe SKU is listed as an NVLink Bridge for two GPUs at 600 GB/s."
+          ]
+        }
+      ]
+    },
+    "RTX PRO 6000": {
+      "displayName": "NVIDIA RTX PRO 6000",
+      "architecture": "Blackwell",
+      "productUrl": "https://www.nvidia.com/en-us/products/workstations/professional-desktop-gpus/rtx-pro-6000/",
+      "sources": [
+        {
+          "label": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+          "url": "https://www.nvidia.com/en-us/products/workstations/professional-desktop-gpus/rtx-pro-6000/"
+        },
+        {
+          "label": "NVIDIA RTX PRO 6000 Blackwell Series (Server, Workstation, Max-Q)",
+          "url": "https://www.nvidia.com/en-us/products/workstations/professional-desktop-gpus/rtx-pro-6000-family/"
+        }
+      ],
+      "variants": [
+        {
+          "id": "workstation",
+          "name": "RTX PRO 6000 Blackwell Workstation Edition",
+          "formFactor": "PCIe dual slot",
+          "memoryGb": 96,
+          "memoryType": "GDDR7 ECC",
+          "memoryBandwidthTBs": 1.792,
+          "nvlinkGBs": null,
+          "tdpW": "600W",
+          "fp64Tflops": null,
+          "fp64TensorTflops": null,
+          "notes": [
+            "NVIDIA's family page prints 96 GB GDDR7 ECC for Server, Workstation and Max-Q editions. Memory bandwidth 1,792 GB/s is printed on the Workstation Edition page only; Server and Max-Q bandwidth stay not published here."
+          ]
+        }
+      ]
+    }
+  }
+}

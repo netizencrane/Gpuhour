@@ -2,6 +2,11 @@
   "entries": [
     {
       "date": "2026-10-24",
+      "title": "Hetzner dedicated GPU servers added from official pages",
+      "body": "Added four verified Hetzner GEX63 / GEX131 / GEX430 rows for RTX PRO 6000. Figures are the published hourly rates excl. VAT from hetzner.com dedicated-rootserver pages, including Helsinki and Falkenstein where listed. These are dedicated servers with setup fees, not cloud GPU pods. Hetzner still has no published H100, H200, B200 or A100 list price in this dataset."
+    },
+    {
+      "date": "2026-10-24",
       "title": "Cleared unverified VRAM on RunPod and TBD rows",
       "body": "RunPod JSON-LD did not print VRAM, so those cells are now empty. Invented VRAM on unverified Lambda/Nebius/Crusoe/Verda/OVH/Scaleway placeholder rows was removed. Prices themselves were unchanged."
     },

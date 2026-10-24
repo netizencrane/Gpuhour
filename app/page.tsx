@@ -67,6 +67,14 @@ export default function HomePage({
         <Link href="/provider/runpod">RunPod</Link>
         <Link href="/provider/vast-ai">Vast.ai</Link>
         <Link href="/provider/lambda">Lambda</Link>
+        <Link href="/provider/coreweave">CoreWeave</Link>
+        <Link href="/provider/nebius">Nebius</Link>
+        <Link href="/provider/digitalocean">DigitalOcean</Link>
+        <Link href="/compare/runpod-vs-vast-ai">RunPod vs Vast.ai</Link>
+        <Link href="/compare/runpod-vs-lambda">RunPod vs Lambda</Link>
+        <Link href="/compare/h100-vs-h200">H100 vs H200</Link>
+        <Link href="/compare/h100-vs-a100">H100 vs A100</Link>
+        <Link href="/compare/b200-vs-h100">B200 vs H100</Link>
         <Link href="/methodology">Methodology</Link>
       </nav>
 
