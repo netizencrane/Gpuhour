@@ -1,7 +1,8 @@
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/json-ld";
 import { PageHeader } from "@/components/page-header";
-import { PriceExplorer } from "@/components/price-explorer";
+import { SuspendedPriceExplorer } from "@/components/suspended-price-explorer";
 import { StubNotice } from "@/components/stub-notice";
 import { breadcrumbJsonLd, datasetJsonLd } from "@/lib/json-ld";
 import { getOffers } from "@/lib/prices";
@@ -65,12 +66,11 @@ export async function generateMetadata({
   });
 }
 
-export default async function ComparePage({
+async function ComparePageBody({
   params,
   searchParams,
 }: DynamicPageProps<"slug">) {
   const { slug } = await params;
-  const query = await searchParams;
   const copy = COPY[slug as (typeof COMPARE_SLUGS)[number]];
   if (!copy) {
     notFound();
@@ -106,12 +106,20 @@ export default async function ComparePage({
         <p>{copy.description}</p>
       </PageHeader>
       <StubNotice page={`/compare/${slug}`} />
-      <PriceExplorer
+      <SuspendedPriceExplorer
         offers={offers}
-        searchParams={query}
+        searchParams={searchParams}
         pathname={`/compare/${slug}`}
         caption={`${copy.title} rows.`}
       />
     </div>
+  );
+}
+
+export default function ComparePage(props: DynamicPageProps<"slug">) {
+  return (
+    <Suspense fallback={<p className="text-sm text-ink-500">Loading comparison…</p>}>
+      <ComparePageBody {...props} />
+    </Suspense>
   );
 }

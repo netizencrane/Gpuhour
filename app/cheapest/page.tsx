@@ -1,6 +1,6 @@
 import { JsonLd } from "@/components/json-ld";
 import { PageHeader } from "@/components/page-header";
-import { PriceExplorer } from "@/components/price-explorer";
+import { SuspendedPriceExplorer } from "@/components/suspended-price-explorer";
 import { StubNotice } from "@/components/stub-notice";
 import { breadcrumbJsonLd, datasetJsonLd } from "@/lib/json-ld";
 import { getOffers } from "@/lib/prices";
@@ -14,10 +14,9 @@ export const metadata = pageMetadata({
   path: "/cheapest",
 });
 
-export default async function CheapestPage({
+export default function CheapestPage({
   searchParams,
 }: StaticPageProps) {
-  const params = await searchParams;
   const offers = getOffers();
 
   return (
@@ -47,12 +46,12 @@ export default async function CheapestPage({
         </p>
       </PageHeader>
       <StubNotice page="/cheapest" />
-      <PriceExplorer
+      <SuspendedPriceExplorer
         offers={offers}
-        searchParams={params}
+        searchParams={searchParams}
         pathname="/cheapest"
         caption="Cheapest cloud GPU table."
-        presetFilters={{ pricingType: params.pricingType ? undefined : "on-demand" }}
+        presetFilters={{ pricingType: "on-demand" }}
       />
     </div>
   );

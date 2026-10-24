@@ -1,6 +1,6 @@
 import { JsonLd } from "@/components/json-ld";
 import { PageHeader } from "@/components/page-header";
-import { PriceExplorer } from "@/components/price-explorer";
+import { SuspendedPriceExplorer } from "@/components/suspended-price-explorer";
 import { StubNotice } from "@/components/stub-notice";
 import { breadcrumbJsonLd, datasetJsonLd } from "@/lib/json-ld";
 import { getOffers } from "@/lib/prices";
@@ -14,8 +14,7 @@ export const metadata = pageMetadata({
   path: "/eu",
 });
 
-export default async function EuPage({ searchParams }: StaticPageProps) {
-  const params = await searchParams;
+export default function EuPage({ searchParams }: StaticPageProps) {
   const offers = getOffers();
 
   return (
@@ -43,12 +42,13 @@ export default async function EuPage({ searchParams }: StaticPageProps) {
         </p>
       </PageHeader>
       <StubNotice page="/eu" />
-      <PriceExplorer
+      <SuspendedPriceExplorer
         offers={offers}
-        searchParams={{ ...params, currency: params.currency ?? "EUR" }}
+        searchParams={searchParams}
         pathname="/eu"
         caption="EU / EEA GPU cloud table."
         presetFilters={{ eu: true }}
+        defaultCurrency="EUR"
       />
     </div>
   );

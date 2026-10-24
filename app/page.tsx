@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { JsonLd } from "@/components/json-ld";
 import { PageHeader } from "@/components/page-header";
-import { PriceExplorer } from "@/components/price-explorer";
+import { SuspendedPriceExplorer } from "@/components/suspended-price-explorer";
 import {
   breadcrumbJsonLd,
   datasetJsonLd,
@@ -19,10 +19,9 @@ export const metadata = pageMetadata({
   path: "/",
 });
 
-export default async function HomePage({
+export default function HomePage({
   searchParams,
 }: StaticPageProps) {
-  const params = await searchParams;
   const offers = getOffers();
 
   return (
@@ -71,9 +70,9 @@ export default async function HomePage({
         <Link href="/methodology">Methodology</Link>
       </nav>
 
-      <PriceExplorer
+      <SuspendedPriceExplorer
         offers={offers}
-        searchParams={params}
+        searchParams={searchParams}
         pathname="/"
         caption="GPU cloud price comparison."
       />

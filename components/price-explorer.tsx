@@ -21,16 +21,21 @@ export function PriceExplorer({
   pathname,
   caption,
   presetFilters,
+  defaultCurrency = "USD",
 }: {
   offers: PriceOffer[];
   searchParams: Record<string, string | string[] | undefined>;
   pathname: string;
   caption: string;
   presetFilters?: OfferFilters;
+  defaultCurrency?: "USD" | "EUR";
 }) {
   const filters = { ...filtersFromSearchParams(searchParams), ...presetFilters };
   const sort = sortFromSearchParams(searchParams);
-  const currency = currencyFromSearchParams(searchParams);
+  const currency =
+    searchParams.currency === undefined
+      ? defaultCurrency
+      : currencyFromSearchParams(searchParams);
   const visible = sortOffers(filterOffers(offers, filters), sort);
   const updated = latestCheckedAt();
 

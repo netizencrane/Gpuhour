@@ -1,7 +1,8 @@
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/json-ld";
 import { PageHeader } from "@/components/page-header";
-import { PriceExplorer } from "@/components/price-explorer";
+import { SuspendedPriceExplorer } from "@/components/suspended-price-explorer";
 import { StubNotice } from "@/components/stub-notice";
 import {
   breadcrumbJsonLd,
@@ -64,12 +65,11 @@ export async function generateMetadata({
   });
 }
 
-export default async function GpuPage({
+async function GpuPageBody({
   params,
   searchParams,
 }: DynamicPageProps<"model">) {
   const { model } = await params;
-  const query = await searchParams;
   const gpu = GPU_SLUGS[model as GpuSlug];
   const copy = COPY[model as GpuSlug];
   if (!gpu || !copy) {
@@ -104,12 +104,20 @@ export default async function GpuPage({
         <p>{copy.description}</p>
       </PageHeader>
       <StubNotice page={`/gpu/${model}`} />
-      <PriceExplorer
+      <SuspendedPriceExplorer
         offers={offers}
-        searchParams={query}
+        searchParams={searchParams}
         pathname={`/gpu/${model}`}
         caption={`${gpu} comparison.`}
       />
     </div>
+  );
+}
+
+export default function GpuPage(props: DynamicPageProps<"model">) {
+  return (
+    <Suspense fallback={<p className="text-sm text-ink-500">Loading GPU page…</p>}>
+      <GpuPageBody {...props} />
+    </Suspense>
   );
 }
