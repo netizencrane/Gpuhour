@@ -1,0 +1,74 @@
+{
+  "programs": [
+    {
+      "providerSlug": "digitalocean",
+      "name": "DigitalOcean (incl. Paperspace)",
+      "approved": false,
+      "officialUrl": "https://www.digitalocean.com/pricing/gpu-droplets",
+      "affiliateUrl": "https://www.digitalocean.com/?ref=PLACEHOLDER",
+      "network": "Awin",
+      "termsUrl": "https://www.digitalocean.com/affiliates",
+      "note": "Application pending. Use the official URL until Stefan marks approved true."
+    },
+    {
+      "providerSlug": "runpod",
+      "name": "RunPod",
+      "approved": false,
+      "officialUrl": "https://www.runpod.io/pricing",
+      "affiliateUrl": "https://www.runpod.io/?ref=PLACEHOLDER",
+      "network": "In-house",
+      "termsUrl": "https://www.runpod.io/referral-and-affiliate-program",
+      "note": "Application pending. 3% Pods / 5% Serverless published terms as of the 24 Oct 2026 plan."
+    },
+    {
+      "providerSlug": "vast-ai",
+      "name": "Vast.ai",
+      "approved": false,
+      "officialUrl": "https://vast.ai/pricing",
+      "affiliateUrl": "https://vast.ai/?ref=PLACEHOLDER",
+      "network": "In-house",
+      "termsUrl": "https://docs.vast.ai/guides/reference/referral-program",
+      "note": "Needs a dedicated referral account. No brand-term ads (from 15 Sep 2026)."
+    },
+    {
+      "providerSlug": "novita",
+      "name": "Novita AI",
+      "approved": false,
+      "officialUrl": "https://novita.ai/affiliate",
+      "affiliateUrl": "https://novita.ai/?ref=PLACEHOLDER",
+      "network": "In-house",
+      "termsUrl": "https://novita.ai/affiliate",
+      "note": "Application pending. No verified GPU list prices in this dataset yet."
+    },
+    {
+      "providerSlug": "massed-compute",
+      "name": "Massed Compute",
+      "approved": false,
+      "officialUrl": "https://massedcompute.com/affiliate-program/",
+      "affiliateUrl": "https://massedcompute.com/?ref=PLACEHOLDER",
+      "network": "In-house",
+      "termsUrl": "https://massedcompute.com/affiliate-program/",
+      "note": "Application pending. No verified GPU list prices in this dataset yet."
+    },
+    {
+      "providerSlug": "vultr",
+      "name": "Vultr",
+      "approved": false,
+      "officialUrl": "https://www.vultr.com/company/referral-program/",
+      "affiliateUrl": "https://www.vultr.com/?ref=PLACEHOLDER",
+      "network": "In-house",
+      "termsUrl": "https://www.vultr.com/company/referral-program/",
+      "note": "Application pending. No verified GPU list prices in this dataset yet."
+    },
+    {
+      "providerSlug": "hyperbolic",
+      "name": "Hyperbolic",
+      "approved": false,
+      "officialUrl": "https://app.hyperbolic.ai/referrals",
+      "affiliateUrl": "https://app.hyperbolic.ai/?ref=PLACEHOLDER",
+      "network": "In-house",
+      "termsUrl": "https://app.hyperbolic.ai/referrals",
+      "note": "Application pending. No verified GPU list prices in this dataset yet."
+    }
+  ]
+}
