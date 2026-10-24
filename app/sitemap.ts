@@ -1,4 +1,6 @@
 import type { MetadataRoute } from "next";
+import { FEATURED_PROVIDER_SLUGS } from "@/lib/page-links";
+import { latestCheckedAt } from "@/lib/prices";
 import {
   COMPARE_SLUGS,
   GPU_SLUGS,
@@ -7,7 +9,7 @@ import {
 } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date("2026-10-24T12:00:00Z");
+  const now = new Date(latestCheckedAt());
   const staticRoutes = [
     "",
     "/methodology",
@@ -26,25 +28,27 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${SITE_URL}${path || "/"}`,
       lastModified: now,
       changeFrequency: (path === "" ? "daily" : "weekly") as "daily" | "weekly",
-      priority: path === "" ? 1 : 0.6,
+      priority: path === "" ? 1 : path === "/cheapest" || path === "/eu" ? 0.8 : 0.6,
     })),
     ...Object.keys(GPU_SLUGS).map((slug) => ({
       url: `${SITE_URL}/gpu/${slug}`,
       lastModified: now,
       changeFrequency: "weekly" as const,
-      priority: 0.5,
+      priority: 0.8,
     })),
     ...PROVIDER_SLUGS.map((slug) => ({
       url: `${SITE_URL}/provider/${slug}`,
       lastModified: now,
       changeFrequency: "weekly" as const,
-      priority: 0.5,
+      priority: (FEATURED_PROVIDER_SLUGS as readonly string[]).includes(slug)
+        ? 0.7
+        : 0.5,
     })),
     ...COMPARE_SLUGS.map((slug) => ({
       url: `${SITE_URL}/compare/${slug}`,
       lastModified: now,
       changeFrequency: "weekly" as const,
-      priority: 0.4,
+      priority: 0.6,
     })),
   ];
 }

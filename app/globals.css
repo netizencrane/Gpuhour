@@ -143,3 +143,44 @@ a:hover {
   margin: 0.75rem 0 0.75rem 1.1rem;
   list-style: disc;
 }
+
+.content-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.content-table th,
+.content-table td {
+  border-bottom: 1px solid var(--line);
+  padding: 0.7rem 0.65rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.content-table thead th {
+  background: var(--paper-100);
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.content-table tbody th {
+  font-weight: 600;
+}
+
+.faq-list {
+  display: grid;
+  gap: 1.25rem;
+  max-width: 46rem;
+}
+
+.faq-list dt {
+  font-weight: 600;
+}
+
+.faq-list dd {
+  margin-top: 0.35rem;
+  color: var(--ink-700);
+  line-height: 1.65;
+}

@@ -2,6 +2,12 @@ import Link from "next/link";
 import { SITE_NAME } from "@/lib/site";
 
 const LINKS = [
+  { href: "/gpu/h100", label: "H100 rental" },
+  { href: "/gpu/h200", label: "H200 rental" },
+  { href: "/cheapest", label: "Cheapest cloud GPU" },
+  { href: "/eu", label: "EU GPU cloud" },
+  { href: "/provider/runpod", label: "RunPod pricing" },
+  { href: "/compare/h100-vs-h200", label: "H100 vs H200" },
   { href: "/methodology", label: "Methodology" },
   { href: "/changelog", label: "Changelog" },
   { href: "/about", label: "About" },

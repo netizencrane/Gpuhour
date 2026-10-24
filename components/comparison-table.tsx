@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { AffiliateLink } from "@/components/affiliate-link";
+import { GPU_SLUGS, PROVIDER_SLUGS } from "@/lib/site";
 import { TABLE_COLUMNS, type SortKey } from "@/lib/columns";
 import {
   buildQuery,
@@ -29,10 +30,11 @@ function sortHref(
 }
 
 function GpuCell({ offer }: { offer: PriceOffer }) {
+  const slug = Object.entries(GPU_SLUGS).find(([, name]) => name === offer.gpu)?.[0];
   return (
     <div>
       <div className="font-medium text-ink-900">
-        {offer.gpu}{" "}
+        {slug ? <Link href={`/gpu/${slug}`}>{offer.gpu}</Link> : offer.gpu}{" "}
         <span className="text-ink-500">{offer.variant}</span>
       </div>
       <div className="text-xs text-ink-500">
@@ -99,7 +101,14 @@ function OfferCard({
         <div>
           <dt className="text-ink-500">Provider</dt>
           <dd>
-            {offer.provider} ({providerTypeLabel(offer.providerType)})
+            {PROVIDER_SLUGS.includes(
+              offer.providerSlug as (typeof PROVIDER_SLUGS)[number],
+            ) ? (
+              <Link href={`/provider/${offer.providerSlug}`}>{offer.provider}</Link>
+            ) : (
+              offer.provider
+            )}{" "}
+            ({providerTypeLabel(offer.providerType)})
           </dd>
         </div>
         <div>
@@ -212,7 +221,17 @@ export function ComparisonTable({
                     <GpuCell offer={offer} />
                   </th>
                   <td>
-                    <div className="font-medium">{offer.provider}</div>
+                    <div className="font-medium">
+                      {PROVIDER_SLUGS.includes(
+                        offer.providerSlug as (typeof PROVIDER_SLUGS)[number],
+                      ) ? (
+                        <Link href={`/provider/${offer.providerSlug}`}>
+                          {offer.provider}
+                        </Link>
+                      ) : (
+                        offer.provider
+                      )}
+                    </div>
                     <div className="text-xs text-ink-500">
                       {providerTypeLabel(offer.providerType)}
                     </div>
